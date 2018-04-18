@@ -16,7 +16,6 @@ class App extends Component {
       userInfo: null,
       repos: [],
       starred: []
-
     }
   }
 
@@ -44,6 +43,22 @@ class App extends Component {
     }
   }
 
+  getRepos(type) {
+    return (e) => {
+      ajax().get(`https://api.github.com/users/tgmarinho/${type}`)
+        .then(result => {
+          this.setState({
+            [type]: result.map(repo => ({
+              id: repo.id,
+              name: repo.name,
+              link: repo.html_url
+            })
+            )
+          })
+        })
+    }
+  }
+
 
   render() {
     return (
@@ -52,8 +67,8 @@ class App extends Component {
         repos={this.state.repos}
         starred={this.state.starred}
         handleSearch={(e) => this.handleSearch(e)}
-        getRepos={(e) => console.log('getRepos')}
-        getStarred={(e) => console.log('getStarred')}
+        getRepos={this.getRepos('repos')}
+        getStarred={this.getRepos('starred')}
 
       />
     )
