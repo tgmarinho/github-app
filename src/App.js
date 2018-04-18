@@ -1,46 +1,27 @@
 import React from 'react';
 import './App.css';
+import Search from './components/search'
+import UserInfo from './components/user-info'
+import Actions from './components/actions'
+import Repos from './components/repos'
 
 const App = () => (
   <div className='app'>
 
-    <div className="search">
-      <input type="search" placeholder="Digite o nome do usuário do github" />
-    </div>
+    <Search />
+    <UserInfo />
+    <Actions />
 
-    <div className='user-info'>
-      <img src='https://avatars2.githubusercontent.com/u/380327?v=4' />
-      <h1>
-        <a href='https://github.com/tgmarinho'>Thiago Marinho</a>
-      </h1>
+    <Repos className="repos" title="Respositórios:" repos={[{
+      name: "nome do repositorio",
+      link: "#"
+    }]} />
 
-      <ul className='repos-info'>
-        <li> Respositórios 221</li>
-        <li> Seguidores: 10</li>
-        <li> Seguindo> 10</li>
-      </ul>
+    <Repos className="starred" title="Favoritos:" repos={[{
+      name: "nome do repositorio",
+      link: "#"
+    }]} />
 
-      <div className='actions'>
-        <button> Ver Respositórios</button>
-        <button> Ver favoritos</button>
-      </div>
-
-      <div className='repos'>
-        <h2> Respositórios: </h2>
-        <ul>
-          <li><a href="#">Nome do repositório</a></li>
-        </ul>
-      </div>
-
-      <div className='starred'>
-        <h2> Favortos: </h2>
-        <ul>
-          <li><a href="#">Nome do repositório</a></li>
-        </ul>
-      </div>
-
-
-    </div>
   </div >
 )
 
