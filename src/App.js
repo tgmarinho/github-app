@@ -49,10 +49,10 @@ class App extends Component {
         .then(result => {
           this.setState({
             [type]: result.map(repo => ({
-              id: repo.id,
-              name: repo.name,
-              link: repo.html_url
-            })
+                id: repo.id,
+                name: repo.name,
+                link: repo.html_url
+              })
             )
           })
         })
