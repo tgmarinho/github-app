@@ -9,7 +9,7 @@ const UserInfo = ( {userInfo} ) => (
     <div className='user-info'>
         <img src={userInfo.photo} alt="" />
         <h1 className="username">
-            <a href={`https://github.com/${userInfo.login}`}>{userInfo.username}</a>
+            <a href={`https://github.com/${userInfo.login}`}>{userInfo.login}</a>
         </h1>
 
         <ul className='repos-info'>
@@ -22,12 +22,11 @@ const UserInfo = ( {userInfo} ) => (
 
 UserInfo.propTypes = {
     userInfo: PropTypes.shape({
-        username: PropTypes.string.isRequired,
         photo: PropTypes.string.isRequired,
         login: PropTypes.string.isRequired,
         repos: PropTypes.number.isRequired,
-        follwers: PropTypes,
-        following: ''
+        followers: PropTypes.number.isRequired,
+        following: PropTypes.number.isRequired,
     })
 }
 
