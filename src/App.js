@@ -12,13 +12,30 @@ class App extends Component {
   constructor() {
     super();
     this.state = {
+      userInfo: {
+        name: "Thiago Marinho",
+        repos: 123,
+        followers: 19,
+        following: 100
+      },
+      repos: [{
+        name: 'Repo',
+        link: '#'
+      }],
+      starred: [{
+        name: 'Repo',
+        link: '#'
+      }]
 
     }
   }
 
   render() {
     return (
-     <AppContent
+     <AppContent 
+      userInfo={this.state.userInfo}
+      repos={this.state.repos}
+      starred={this.state.starred}
      
      />
     )
