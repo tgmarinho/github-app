@@ -2,7 +2,7 @@ import React from 'react';
 
 const UserInfo = () => (
     <div className='user-info'>
-        <img src='https://avatars2.githubusercontent.com/u/380327?v=4' />
+        <img src='https://avatars2.githubusercontent.com/u/380327?v=4' alt="" />
         <h1 className="username">
             <a href='https://github.com/tgmarinho'>Thiago Marinho</a>
         </h1>
