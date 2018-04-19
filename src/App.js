@@ -19,13 +19,19 @@ class App extends Component {
     }
   }
 
+  getGitHubApiUrl(username, type) {
+    const internalUser = username ? `/${username}` : '';
+    const internalType = type ? `/${type}` : '';
+    return `https://api.github.com/users${internalUser}${internalType}`;
+  }
+
   handleSearch(e) {
     const value = e.target.value;
     const keyCode = e.which || e.keyCode
     const ENTER = 13;
 
     if (keyCode === ENTER) {
-      ajax().get(`https://api.github.com/users/${value}`)
+      ajax().get(this.getGitHubApiUrl(value))
         .then((result) => {
           this.setState({
             userInfo: {
@@ -45,7 +51,8 @@ class App extends Component {
 
   getRepos(type) {
     return (e) => {
-      ajax().get(`https://api.github.com/users/tgmarinho/${type}`)
+      const username = this.state.userInfo.login;
+      ajax().get(this.getGitHubApiUrl(username, type))
         .then(result => {
           this.setState({
             [type]: result.map(repo => ({
