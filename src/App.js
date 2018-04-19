@@ -30,7 +30,13 @@ class App extends Component {
     const keyCode = e.which || e.keyCode
     const ENTER = 13;
 
+    e.persist(); // para não anular o objeto event, pois o 
+    // event é usando em outros lugar passado por referência, devido o uso do ajax
+    
+    // ou const target = e.target e usar a variável target.
+
     if (keyCode === ENTER) {
+      e.target.disabled = true;
       ajax().get(this.getGitHubApiUrl(value))
         .then((result) => {
           this.setState({
@@ -45,6 +51,9 @@ class App extends Component {
             repos: [],
             starred: []
           })
+        })
+        .always(() => {
+          e.target.disabled = false;
         })
     }
   }
