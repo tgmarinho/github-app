@@ -18,8 +18,10 @@ class App extends Component {
       starred: [],
       isFetching: false
     }
-
-    this.handleSearch = this.handleSearch.bind(this); // mais perfomático que usar arrow functions para manter o this da classe.
+  
+    // mais perfomático que usar arrow functions para manter o this da classe. Recomendação do React... 
+    // bind feito na construção da classe, apenas quando utiliza classe
+    this.handleSearch = this.handleSearch.bind(this); 
   }
 
   getGitHubApiUrl(username, type) {
