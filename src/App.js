@@ -18,6 +18,8 @@ class App extends Component {
       starred: [],
       isFetching: false
     }
+
+    this.handleSearch = this.handleSearch.bind(this); // mais perfomático que usar arrow functions para manter o this da classe.
   }
 
   getGitHubApiUrl(username, type) {
@@ -79,7 +81,7 @@ class App extends Component {
         repos={this.state.repos}
         starred={this.state.starred}
         isFetching={this.state.isFetching}
-        handleSearch={(e) => this.handleSearch(e)}
+        handleSearch={this.handleSearch}
         getRepos={this.getRepos('repos')}
         getStarred={this.getRepos('starred')}
 
